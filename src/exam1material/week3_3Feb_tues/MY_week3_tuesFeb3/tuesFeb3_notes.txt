@@ -110,14 +110,17 @@ When is an argument invalid?
 
 
 
-Example:
+Example (from HW 1):
 
 Premises:
-    If it is sunny, then I wear sunscreen.
-    I wear sunscreen.
+    You'll stop eating at Chipotle if they raise their prices.
+
+    Chipotle doesn't raise their prices
 
 Proposed conclusion:
-    It is sunny.
+    I stop eating at Chipotle
+
+    
 
 1) Translate to propositional logic
 
