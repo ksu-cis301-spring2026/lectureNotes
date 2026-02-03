@@ -383,7 +383,7 @@ straightforward approach to checking all possibilities:
 
 
 - Aside: P and NP problems
-
+truth assignments
 running time programs
 
 can we solve a problem in polynomial time?
