@@ -140,13 +140,21 @@ top-level operator?
 
 parse trees
 
+The variables will always be at the bottom.
+The structure already shows the precedence, so parentheses aren't needed.
+Implies always goes at the top. 
+Not operator always applied first.
+
 --> what are they?
+A hierarchical, ordered, rooted tree representation of the syntactic structure of an input string.
 
 --> draw one for (p ∧ q) → ¬r
 
 --> how do they relate to programming?
+Compilers use recursive desent to figure out the code in a tree-like structure.
 
 --> what is the "top-level operator" here?
+The implies! *always the leftmost*
 
 
 
@@ -158,6 +166,7 @@ parse trees
 
 
 --> expression trees
+Are hierarchical data structures that represent mathematical expressions as a tree.
 
 
 
@@ -175,6 +184,12 @@ If we have 2 variables, how many possible truth assignments?
 
     p, q
 
+4
+T T
+T F
+F T
+F F
+
 
 
 
@@ -183,10 +198,12 @@ If we have 3 variables, how many possible truth assignments?
 
     p, q, r
 
+8
+All 4 previously + the same outcomes for R
 
 
 If we have n variables, how many possible truth assignments?
-
+2^n
 
 
 
@@ -202,20 +219,20 @@ Contingent, contradictory, tautology
 
 
 
-contingent: 
+contingent: mix of true and false output
 
-    Example? 
-
-
-
-contradictory:
-
-    Example? 
+    Example? p ∨ q
 
 
-tautology:
 
-    Example? 
+contradictory: always false
+
+    Example? ¬p ∨ p
+
+
+tautology: always true
+
+    Example? ¬p V p
     
 
 ///////////////////////////////////////////
@@ -235,7 +252,17 @@ Write a truth table for:
 -----------------------------
 p q r  #  (p ∧ r) → (r ∨ ¬q)
 -----------------------------
+T T T #      T    T     T  F
+T T F #      F    T     F  F
+T F T #      T    T     T  T
+T F F #      F    T     T  T
+F T T #      F    T     T  F
+T F T #      F    T     F  F
+F F T #      F    T     T  T
+F F F #      F    T     T  T
+-----------------------------
 
+Tautology
 
 
 
@@ -274,6 +301,7 @@ Propositional logic.
 
 - a set of propositional atoms (statements that can be T/F)
     --> these will be our boolean variables in logic statements
+    --> must be as simple as possible; ex: p: I go to class (not the negation)
 
 
 
@@ -290,22 +318,22 @@ Propositional logic.
 
 Which ones are propositions?
 
-Today is Thursday.
+Today is Thursday. yes
 
 
-What time is it?
+What time is it? no
 
 
-x == 2
+x == 2 yes
 
 
-Pigs can fly.
+Pigs can fly. yes
 
 
-Drive carefully.
+Drive carefully. no
 
 
-y <= 4
+y <= 4 yes
 
 
 
@@ -324,21 +352,26 @@ Suppose we have these propositional atoms:
 
 How would we express these as English sentences?
 
-    ¬p:
+    ¬p: It is not below freezing.
 
 
-    p ∧ q:
+    p ∧ q: It is below freezing and it's snowing.
 
 
-    p → q :
+    p → q: If it is below freezing, then it is snowing.
+        p = F
+        q = T 
+        outputs true
 
 
-    ¬p → ¬q:
+    ¬p → ¬q: If it is not below freezing, then it is not snowing.
+        p = F
+        q = T 
+        outputs false
 
+    r ∨ s: y <= 4 || x == 2
 
-    r ∨ s:
-
-    ¬r:
+    ¬r: y > 4
 
 ////////////////////////
 

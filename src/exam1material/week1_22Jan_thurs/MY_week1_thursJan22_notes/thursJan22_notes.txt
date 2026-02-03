@@ -43,7 +43,11 @@ else {
     statements3;
 }
 
+know x < 3 || y > 4 is false
+    so x >= 3 && y <= 4 
 
+know x < 5 && y == 7 is true
+    conflicts with y <= 4 
 
 --> is it possible for "statements2" to execute?7
 
@@ -68,12 +72,16 @@ Mae tells you, "Bill would tell you that I am a knave."
 
 What types are Sarah, Bill, and Mae?
 
-
 (How might we simplify everything?)
-
-
+    Sarah: Bill is a knights
+    Bill: Mae is a knight
+    Mae: Bill would say I'm a knave
     
+Suppose Sarah is a knight. Then Bill must be a knight and Mae must be a knight. 
+This doesn't work, since Bill would say that Mae is a knight.
 
+Suppose instead Sarah is a knave. Then Bill and Mae must be knaves.
+Bill would lie and say Mae is a knight. ____
 
 ////////////////////////////////////
 
@@ -88,6 +96,15 @@ Lion says: "Yesterday was one of my lying days."
 Unicorn says: "Yesterday was one of my lying days, too."
 
 What day is it?
+
+Sunday: Lion didn't lie yesterday and should be telling the truth
+Tuesday/Wednesday/Friday/Saturday: Whoever is lying that day also lied the day before, 
+but should be lying about that. 
+Monday: Unicorn tells the truth Mon/Sun, should say they didn't lie.
+Thursday: Lion truthfully says they lied on Wednesday. 
+Unicorn correctly lies about lying on Wednesday.
+
+Thursday.
 
 
 
@@ -107,7 +124,7 @@ The first one says: "I'm Tweedledum."
 The second one says: "I'm Tweedledee."
 
 Which is which? What day is it?
-
+Sunday. Every other day they would give the same name. They are who they say.
 
 
 
@@ -119,7 +136,30 @@ Which is which? What day is it?
 
 In-class quiz
 
+On the Island of Knights and Knaves, you meet Diana and Carl. 
 
+Diana says: "At least one of us is a knave."
+
+Carl says: "Diana would say I am a knight."
+
+What types are Diana and Carl?
+
+Suppose Diana is a knight. Then Carl would be a knave. 
+
+
+
+Tweedledee and Tweedledum are identical twins. You know that one of them tells only lies on Mon/Tues/Wed, and that the other tells only lies on Thurs/Fri/Sat. They both tell only the truth on their non-lying days.
+
+ 
+
+You see them both together. 
+
+First twin says: "Today is Monday or Wednesday."
+
+Second twin says: "Today is Monday or Sunday."
+
+What day of the week is it?
+Wednesday
 
 
 
@@ -139,7 +179,18 @@ The second one says: "I'm Tweedledee!"
 
 Who gets the rattle?
 
+Suppose the first twin is telling the truth. Rattle goes to Tweedledee. 
+Second twin must be lying, so second twin is Tweeledum. 
+First twin is Tweedledee, so first twin gets the rattle. 
+
+Suppose instead the first twin is lying. Tweedledum owns the rattle. 
+Second twin is telling the truth, so they are Tweedledee. 
+First twin is Tweedledum. The first twin (Tweedledum) gets the rattle. 
+
+First twin gets the rattle. 
+
 Who is who?
+There isn't enough information to determine who is who.
 
 
 ///////////////////////////////////////////
@@ -156,11 +207,17 @@ Gold casket: "The portrait is in this casket."
 Silver casket: "The portrait is not in this casket."
 Lead casket: "The portrait is not in the gold casket."
 
+All messages could be false or just one message could be true. 
+
 Where is the portrait?
 
+Suppose it's in the gold. Both gold and silver statements would be true, so not the case. 
 
+Suppose it's in the silver. Just one statement is true, so this works. 
 
+Suppose it's in the lead. Two statements are true, so can't work. 
 
+Answer: In the silver.
 
 
 ///////////////////////////////////
@@ -195,7 +252,7 @@ Albert says: "Then I also know when Cheryl's birthday is."
 
 
 When is it?
-
+July 16th
 
 
 
@@ -217,15 +274,17 @@ Basic operations:
 
 
 Basic logic gates (draw on board)
-
+    AND, OR, NOT
 
 gates still used to design circuits
 
 
 why do we care about equivalent circuits?
+Could save space / money by producing a smaller board.
 
 
 what about programming?
+It's easier to follow. It also limits the number of comparisons by elliminating unesseccary ones. 
 
 ///////////////////////////////////////////////////
 
@@ -236,20 +295,20 @@ AND:
 
 p q  #  p ∧ q
 --------------
-T T  #    
-T F  #    
-F T  #     
-F F  #    
+T T  #    T
+T F  #    F
+F T  #    F 
+F F  #    F
 
 
 OR:
 
 p q  #  p ∨ q
 --------------
-T T  #    
-T F  #    
-F T  #    
-F F  #    
+T T  #    T
+T F  #    T
+F T  #    T
+F F  #    F
 
 
 NOT:
@@ -275,14 +334,18 @@ Otherwise we have not.
 
 p q  #  p → q
 --------------
-T T  #    
-T F  #      
-F T  #    
-F F  #     
+T T  #    T
+T F  #    F 
+F T  #    T
+F F  #    T 
+
+The last two are called vacuously true. 
+They don't directly break the promise since there is no test. 
 
 /////////////////////////////////////////
 
 How does the implies operator relate to programming?
+It's an if statement. 
 
 
 
@@ -295,6 +358,7 @@ Design circuits for:
 
 p XOR q (with just the gates we've seen, not a specific XOR gate)
 
+*top one refers to left one & bottom refers to the right
 
 
 /////////////////////////////////////
@@ -322,6 +386,9 @@ Basic operations:
 
 ////////////////////////////////////////
 
+if (!p || q && r)
+*and comes first!
+
 Consider ¬p ∨ q ∧ r.
 
 --> what operation do we do first?
@@ -330,14 +397,14 @@ Consider ¬p ∨ q ∧ r.
 
 Order of operations
 
-In math?
-
-
+In math? 
+(), exponent, multiplication/division, addition/subtraction (PEMDAS)
 
 
 For logic statements:
 
 From highest (happens first) to lowest (happens last) precedence:
+(), ¬, ∧, ∨, 
 
 
 ////////////////////////////////////////////////
@@ -358,7 +425,8 @@ p is T
 q is F
 r is F
 
-
+(F) V (F)
+F
 
 ///////////////////////////////////////////
 
