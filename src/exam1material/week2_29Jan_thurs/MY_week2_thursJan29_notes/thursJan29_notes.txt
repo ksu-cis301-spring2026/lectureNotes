@@ -357,14 +357,20 @@ Satisfiability.
 
     (p ∨ ¬q) ∧ (q ∨ ¬r) ∧ (r ∨ ¬p)
 
+find ONE truth assignment that makes the statement true
 
-
+    p = T
+    q = T
+    r = T
 
 
 to show a statement is satisifiable: 
+    find ONE truth assignment that makes the statement true
 
 
 to show a statement is NOT satisfiable: 
+    need FULL truth table, show it is contradictory
+    (show that EVERY possible truth assignment makes the statement false)
 
 
 ////////////////////////////
