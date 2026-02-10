@@ -11,6 +11,20 @@ import org.sireum.justification.natded.prop._
         1 ( a & b | c ) by Premise,
         2 ( b __>: a | d __>: p | q ) by Premise,
         3 ( c __>: q ) by Premise,
+        4 SubProof(
+          5 Assume (a & b),
+          6 ( b ) by AndE2(5),
+          7 ( a | d __>: p | q ) by ImplyE(2, 6),
+          8 ( a ) by AndE1(5),
+          9 ( a | d ) by OrI1(8),
+          10 ( p | q ) by ImplyE(7, 9)
+        ),
+        11 SubProof(
+          12 Assume (c),
+          13 ( q ) by ImplyE(3, 12),
+          14 ( p | q ) by OrI2(13)
+        ),
+        15 ( p | q ) by OrE(1, 4, 11)
 
 
     )
