@@ -4,6 +4,31 @@ HW 3 due tonight
 
     What will the structure be?
 
+        p ∨ q ∨ r: top-level is the rightmost or
+        //(p ∨ q) ∨ r
+
+        Try OrE on premise
+        SubProof: assume p ∨ q
+
+            goal: r ∨ q ∨ p
+            top-level is the rightmost Or
+            could introduce OR if have r ∨ q
+                or if I had p
+
+            nested OrE
+            SubProof: assume p 
+                goal: r ∨ q ∨ p
+                r ∨ q ∨ p by OrI2()
+
+            SubProof: assume q 
+                goal: r ∨ q ∨ p
+                first get r ∨ q
+                then get r ∨ q ∨ p
+
+        SubProof: assume r
+
+            goal: r ∨ q ∨ p
+
 
     How to build conclusion?
 
@@ -50,7 +75,6 @@ Bigger examples: ex1.sc, ex2.sc, ex3.sc
 
 Logika features/tips
 
-- see proof step summary
 - renumber/reformat proofs
 - interpreting errors
 
@@ -59,7 +83,14 @@ Logika features/tips
 
 General proof strategy to this point
 
+1) list premises
+2) break down any premises you can to get extra information
 
+3) look at the conclusion
+
+4) consider if you will need OrE (probably will if you have an OR)
+
+Always consider order of operations!
 
 /////////////////////////
 
@@ -134,7 +165,8 @@ To show NOT satisfiable
 Closed notes/computers.
 
 
-Mix of multiple choice (like quizzes) and open-ended (like homework)
+Mix of multiple choice (like quizzes) and open-ended 
+    (like homework)
 
 Some problems will ask for a proof or explanation --
     read carefully!
