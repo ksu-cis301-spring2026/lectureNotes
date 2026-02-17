@@ -30,8 +30,13 @@ An argument is of the form:
 
 --> When is an argument considered valid?
 
+propositional atoms (p, q)
 
+all truth assignments
+    it is valid if for every truth assignment that makes every premise true, then the conclusion is also true
 
+a tautology for the statement 
+premise1 ^ premise2 ^ ... premiseN -> conclusion
 
 ///////////////////////////////////////
 
@@ -54,9 +59,17 @@ I want to prove:
 
 Propositional atoms:
 
+p: I'm in the CS department
+q: I'm in the ECE department
+r: I can log in to the lab computers
 
 
 Translations:
+I am in the CS dept or I am in the ECE dept: p V q
+I am not in the ECE dept: ¬q
+I can log in to the CS lab computers if I am in the CS dept: p → r
+
+I can log in to the CS lab computers and I am in the CS dept: r ∧ p
 
 
 
@@ -107,7 +120,14 @@ We wish to prove:
 
 When is an argument invalid?
 
+Valid: Every truth assignment that makes all premises true also makes conclusion true
 
+Invalid: Not every truth assignment that makes all premise true also makes conclusion true
+
+Just need one truth assignment where all premises are true and conclusion is false
+
+satisfiable: when I can find at least one truth assignment that makes the statement true
+not satisfiable: every truth assignment makes the statement false
 
 
 Example (from HW 1):
@@ -124,14 +144,23 @@ Proposed conclusion:
 
 1) Translate to propositional logic
 
+p: they raise their prices
+q: you stop eating at Chipotle
 
+Premises: p → q, ¬p 
+Conclusion: q
 
 
 
 2) How can we show it is invalid?
 
+need One counterexample
+truth assignment where all the premises are true, 
+conclusion is false
 
 
+p: F
+q: F
 
 ////////////////////////////////
 
@@ -220,7 +249,7 @@ AND rules idea.
 
 
    --> in what situations do you think we could do that?
-
+P, Q
 
 
 
@@ -228,7 +257,8 @@ AND rules idea.
 2) What if we already had an AND statement like  P ∧ Q.
 
     --> what new claims would make sense using that statement?
-
+P
+Q
 
 
 
@@ -272,13 +302,16 @@ AndE1 : ---------   AndE2 : ---------
 
 What if we knew:
 
-    a ∨ ¬b
+    10 a ∨ ¬b
 
 and also:
 
-    c → d
+    4 c → d
 
 What could we claim with AndI?
+(a v ¬b) ∧ (c → d)
+
+AndI(10, 4)
 
 
 
@@ -364,6 +397,9 @@ Syntax:
 
 OrI1(lineWithLeft)
 OrI2(lineWithRight)
+
+p
+p v !p
 
 ///////////////////////////////////////////
 
