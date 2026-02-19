@@ -68,11 +68,15 @@ BottomE:  ----------
 
 /////////////////////////////////
 
-( p ∧ q, q → ¬p ) ⊢ ( ¬q )
+( p ∧ q, q → ¬p ) ⊢ ( r )
 Proof(
     1 ( p ∧ q )     by Premise,
     2 ( q → ¬p )    by Premise,
-
+    3 ( p ) by AndE1(1),
+    4 ( q ) by AndE2(1),
+    5 ( ¬p ) by ImplyE(2, 4),
+    6 ( F ) by NegE(3, 5),
+    7 ( r ) by BottomE(6)
 )
 
 
@@ -96,7 +100,13 @@ PbC:  -------------------
 ( ¬¬p ) ⊢ ( p )
 Proof(
     1 ( ¬¬p )   by Premise,
-
+    
+    //want p after PbC
+    2 SubProof(
+        3 Assume (¬p), //goal: contradiction (F)
+        4 ( F ) by NegE(3, 1)
+    ),
+    5 ( p ) by PbC(2)
 )
 
 
