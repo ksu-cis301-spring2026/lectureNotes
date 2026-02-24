@@ -14,7 +14,7 @@ import org.sireum.justification.natded.prop._
         2 ( h & !s ) by Premise,
         3 ( h & !(s | c) __>: p ) by Premise,
 
-        
+        //skiped, great review do 15 of these 
     )
   )
 }

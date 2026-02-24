@@ -18,10 +18,10 @@ import org.sireum.justification.natded.prop._
           5(F) by NegE(4,1)
 
           //goal: F
-        ),
-         7 SubProof(
-          8 Assume (!q),
-          9 (!p | !q) by OrI2(8),
+        )
+          6 SubProof(
+          7 Assume (!q),
+          8 (!p | !q) by OrI2(8),
           10 (F) by NegE(9,1)
          ),
 

@@ -11,3 +11,10 @@ import org.sireum.justification.natded.prop._
         
   )
 }
+
+
+
+//* ⊢ ( ( (a → b) ∨ (a → c) ) → a → b ∨ c ) )
+//Proof(
+  //try in logica  //you type in the steps that would go next
+//)/*
