@@ -19,7 +19,7 @@ Proving an argument.
 *Conclusion* - something we are trying to show logically 
     follows from our premises.
 
-
+|-
 
 An argument is of the form:
 

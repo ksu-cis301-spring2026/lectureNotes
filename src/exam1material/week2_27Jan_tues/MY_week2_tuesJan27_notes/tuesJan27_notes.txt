@@ -37,12 +37,13 @@ p → q
 When is this true? When is this false?
 
 
+
 p q  #  p → q
 --------------
-T T  #    
-T F  #    
-F T  #    
-F F  #    
+T T  #   T 
+T F  #   F (b/c it is snowing and I did not bring a coat)
+F T  #   T  
+F F  #   T
 
 //////////////////////////////////////
 
@@ -57,10 +58,14 @@ Basic operations:
 
 ////////////////////////////////////////
 
-Consider ¬p ∨ q → p ∧ ¬q
+Consider ((¬p) ∨ q) → (p ∧ (¬q))
 
 --> what operation do we do first?
 
+   ¬
+   ∧
+   ∨
+   →
 
 
 
@@ -85,12 +90,12 @@ r is F
 
 Order of operations
     ¬ evaluates right to left
-        ¬¬p is equivalent to....
+        ¬¬p is equivalent to....(¬)(¬p) //from right to left
 
 
     ∧ and ∨ evaluate left to right
-        p ∧ q ∧ r is equivalent to....
-        p ∨ q ∨ r is equivalent to....
+        p ∧ q ∧ r is equivalent to.... (p ∧ q) ∧ r 
+        p ∨ q ∨ r is equivalent to.... (p V q) ∧ r 
 
 
     → evaluates right to left
@@ -102,16 +107,18 @@ Order of operations
 
 //////////////////////////////////////////
 
-Top-level operator (what happens LAST?)
+Top-level operator (what happens LAST?) for what happens last
+has the LOWEST precedence
 
 
-¬p ∨ q ∧ r
+¬p ∨ q ∧ r (or would be the lowest here)
 
 
-top-level? 
+top-level? ∨ 
 
 
-How is this similar to a circuit? 
+How is this similar to a circuit? the last one(often on the right)
+its output is the output of the entire circuit. 
 
 
 
@@ -121,8 +128,10 @@ p ∧ q ∨ r ∧ p
 
 rewrite with ():
 
+(p ∧ q) ∨ (r ∧ p)
 
-top-level operator? 
+
+top-level operator? V 
 
 
 
@@ -131,9 +140,10 @@ top-level operator?
 p ∧ q ∧ r ∧ s
 
 rewrite with ():
+(p ∧ q) ∧ r) ∧ s
 
 
-top-level operator?  
+top-level operator?  rightmost ∧. or and
 
 
 ////////////////////////////////////////////////////
@@ -144,6 +154,11 @@ parse trees
 
 --> draw one for (p ∧ q) → ¬r
 
+If I drew this the → would be at the top level. 
+Then the ∧ , which would be branched with the p and q. 
+Finally the not connects to the other side of the →, and the 
+r connects to this. 
+
 --> how do they relate to programming?
 
 --> what is the "top-level operator" here?
@@ -151,7 +166,7 @@ parse trees
 
 
 
---> draw one for p ∨ q ∧ r → ¬p → ¬q ∨ s
+--> draw one for p ∨ q ∧ r |→ ¬p → ¬q ∨ s
 
 
 
@@ -175,6 +190,12 @@ If we have 2 variables, how many possible truth assignments?
 
     p, q
 
+4
+T T 
+F T
+T F
+F F
+
 
 
 
@@ -183,10 +204,13 @@ If we have 3 variables, how many possible truth assignments?
 
     p, q, r
 
+    8
+
 
 
 If we have n variables, how many possible truth assignments?
 
+in general the amount is 2*n or 2^n 
 
 
 
@@ -202,20 +226,21 @@ Contingent, contradictory, tautology
 
 
 
-contingent: 
+contingent: mix of true and false output
 
-    Example? 
-
-
-
-contradictory:
-
-    Example? 
+    Example? p V q 
+    p 
 
 
-tautology:
 
-    Example? 
+contradictory:always false
+
+    Example? ¬p ∧ p
+
+
+tautology: always true
+
+    Example? ¬p V p 
     
 
 ///////////////////////////////////////////
@@ -231,13 +256,21 @@ Write a truth table for:
 
 (p ∧ r) → (r ∨ ¬q)
 
-
+                  * (mark it by putting a star over the top level oporation)
 -----------------------------
 p q r  #  (p ∧ r) → (r ∨ ¬q)
 -----------------------------
+T T T #      T    T        T F
+T T F #      F    T        F F
+T F T #      T    T        T T
+T F F #      F    T        T T 
+F T T #      F    T        T F
+F T F #      F    T        F F
+F F T #      F    T        T T
+F F F #      F    T        T T
 
 
-
+tautology
 
 --> top-level operator?
 
@@ -255,12 +288,12 @@ complete truth table in truth.logika
 --> what to type for different operators
 
 
-AND: &
-OR: |
-NOT: !
-IMPLIES: ->:
+-AND: & - type an & for the & operation
+OR: |   - type a | for the or 
+NOT: !  - ! for the not
+IMPLIES: ->: this is implies (->:)
 
-alignment matters!
+alignment matters! (needs to be in alignment)
 
 --> order of operations in Logika
 
@@ -296,16 +329,16 @@ Today is Thursday.
 What time is it?
 
 
-x == 2
+x == 2 yes
 
 
-Pigs can fly.
+Pigs can fly. yes
 
 
-Drive carefully.
+Drive carefully. no
 
 
-y <= 4
+y <= 4 yes
 
 
 
@@ -313,7 +346,7 @@ y <= 4
 
 Suppose we have these propositional atoms:
 
-    p: It is below freezing.
+    p: It is below freezing. (taking english statements and translating them into a propositional logic system)
 
     q: It is snowing.
 
@@ -324,16 +357,16 @@ Suppose we have these propositional atoms:
 
 How would we express these as English sentences?
 
-    ¬p:
+    ¬p: It is below freezing 
 
 
-    p ∧ q:
+    p ∧ q: It's below freezing and it's snowing 
 
 
-    p → q :
+    p → q : If it is below freezing then it must be snowing
 
 
-    ¬p → ¬q:
+    ¬p → ¬q: If it is not below freezing, then it is not snowing
 
 
     r ∨ s:

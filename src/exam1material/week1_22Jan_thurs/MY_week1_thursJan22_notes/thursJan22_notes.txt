@@ -45,7 +45,12 @@ else {
 
 
 
---> is it possible for "statements2" to execute?7
+--> is it possible for "statements2" to execute?
+
+know that x < 3 || y > 4 is false 
+    so x >= 3 && y <= 4
+know that x < 5 && y == 7 is true 
+    This conflicts with y <= 4
 
 
 
@@ -68,6 +73,19 @@ Mae tells you, "Bill would tell you that I am a knave."
 
 What types are Sarah, Bill, and Mae?
 
+Sarah: Bill is a knight
+Bill: Mae is a knight
+Mae: Bill would say I'm a knave
+
+Best place to start? Sarah
+We suppose Sarah is a knight. Then Bill must be a knight, which would mean that Mae must be a knight.
+This won't work since Bill would say that Mae is a knight. 
+
+Suppose instead that Sarah is a knave. Then Bill and Mae must be knaves. Bill would lie and say Mae is a knight,
+but Mae lies about this and says Bill would say knave. Works. 
+Less confusing way to write the statements?
+
+
 
 (How might we simplify everything?)
 
@@ -89,6 +107,13 @@ Unicorn says: "Yesterday was one of my lying days, too."
 
 What day is it?
 
+Sunday: Lion didn't lie yesterday, should be telling the truth. 
+Tuesday/Wednesday/Friday/Saturday: whoever is lying that day
+also lied the day before, and shouldn't be lying about that.
+Monday: Unicorn tells the truth Mon/Sun, should say they didn't lie.
+Thrusday: Lion truthfully says they lied on Wednesday, unicorn correctly 
+lies about lying on Wednesday. 
+
 
 
 ////////////////////////////////
@@ -106,7 +131,8 @@ You see both of them together.
 The first one says: "I'm Tweedledum." 
 The second one says: "I'm Tweedledee."
 
-Which is which? What day is it?
+Which is which? What day is it? Everyday they would give the same name
+other than Sunday. They are who they say. 
 
 
 
@@ -139,7 +165,19 @@ The second one says: "I'm Tweedledee!"
 
 Who gets the rattle?
 
+Suppose the first twin is telling the true. Rattle goes to Tweedledee.
+Second twin must by lying, so second twin is Tweedledum.
+First twin is Tweedledee, so first twin gets the rattle.
+ 
+Suppose instead that the first twin is lying. Tweedledum owns the rattle. Second twin is 
+telling the truth, so they are Tweedledee. First twin is Tweedledum. The first twin (Tweedledum) 
+gets the rattle. 
+
+First twin gets the rattle.
+
 Who is who?
+
+This does not give us enough information to know who is who.
 
 
 ///////////////////////////////////////////
@@ -158,6 +196,10 @@ Lead casket: "The portrait is not in the gold casket."
 
 Where is the portrait?
 
+They could all be false, or just one message could be true. 
+Suppose it's in the gold. Both Gold and Silver would be true, so not the case.
+Suppose it's silver. Just one works so this works, or just one is true.
+Suppose it's lead. This would not work as it has two trues. 
 
 
 
@@ -194,7 +236,7 @@ Bernard says: "At first I didn't know when Cheryl's
 Albert says: "Then I also know when Cheryl's birthday is."
 
 
-When is it?
+When is it? July 16
 
 
 
@@ -217,15 +259,17 @@ Basic operations:
 
 
 Basic logic gates (draw on board)
+    AND, OR, NOT 
 
 
 gates still used to design circuits
 
 
 why do we care about equivalent circuits?
-
+To saver space and money. 
 
 what about programming?
+Easier to know.
 
 ///////////////////////////////////////////////////
 
@@ -236,28 +280,28 @@ AND:
 
 p q  #  p ∧ q
 --------------
-T T  #    
-T F  #    
-F T  #     
-F F  #    
+T T  #    T
+T F  #    F
+F T  #    F 
+F F  #    F
 
 
 OR:
 
 p q  #  p ∨ q
 --------------
-T T  #    
-T F  #    
-F T  #    
-F F  #    
+T T  #    T
+T F  #    T
+F T  #    T
+F F  #    F
 
 
 NOT:
 
 p  # ¬p
 --------
-T  # 
-F  # 
+T  # F
+F  # T
 
 ////////////////////////////////////////////////
 
@@ -275,16 +319,16 @@ Otherwise we have not.
 
 p q  #  p → q
 --------------
-T T  #    
-T F  #      
-F T  #    
-F F  #     
+T T  #   T 
+T F  #   F   
+F T  #   T (vaculously true) 
+F F  #   T (vaculously true)
 
 /////////////////////////////////////////
 
 How does the implies operator relate to programming?
 
-
+Is is an if/then statement. 
 
 //////////////////////////////////////////
 
@@ -292,8 +336,19 @@ Design circuits for:
 
 ¬(p ∨ q)       (p NOR q)
 
+ p ──┐
+     ├───( OR )───|>o─── Output
+ q ──┘
+
+
+
+
 
 p XOR q (with just the gates we've seen, not a specific XOR gate)
+
+ p ──┐
+     ├───( XOR )─── Output
+ q ──┘
 
 
 
@@ -328,6 +383,8 @@ Consider ¬p ∨ q ∧ r.
 
 
 
+
+
 Order of operations
 
 In math?
@@ -335,16 +392,17 @@ In math?
 
 
 
+
 For logic statements:
 
-From highest (happens first) to lowest (happens last) precedence:
-
+From highest (happens first) to lowest (happens last) precedence:→ 
+ (), ¬, ∧, ∨, → 
 
 ////////////////////////////////////////////////
 
 Given this statement:
 
-    ¬p ∨ q ∧ r
+    (¬)p ∨ (q ∧ r)
 
 Add () to show the order of operations.
 
@@ -357,7 +415,8 @@ variable assignments:
 p is T
 q is F
 r is F
-
+(F) v (F)
+F
 
 
 ///////////////////////////////////////////
