@@ -472,7 +472,7 @@ If I have an animal that isn't a fish, it becomes true
 
 lion
 
-probably meant: ∃ x (Fish(x) → Bird(x))
+probably meant: ∃ x (Fish(x) ⋀ Bird(x))
 
 
 /////////////////
