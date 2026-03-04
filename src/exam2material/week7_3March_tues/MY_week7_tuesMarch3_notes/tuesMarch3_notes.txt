@@ -470,5 +470,3 @@ Example (all1.sc)
 Next time:
 - continue with for all quantifier example
 - proofs and equivalences with the existential quantifier
-
-Maybe pasting straight into the editor will fix any formatting issues.

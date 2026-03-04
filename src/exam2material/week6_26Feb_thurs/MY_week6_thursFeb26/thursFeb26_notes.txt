@@ -251,10 +251,6 @@ Set builder notation: {x : P(x)}
 where P(x) is a statement (a predicate) involving x
 
 
-
-
-
-
 //////////////////////////////////////
 
 Example:
