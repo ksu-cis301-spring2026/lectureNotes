@@ -358,12 +358,12 @@ Describe these sets in set builder notation
 Set union, ⋃
 
 The union of the sets A and B, written A ⋃ B, is the set
-of all elements....?
+of all elements that are in A or in B or in both
 
 
 How could we express in set builder notation?
 
-A ⋃ B =
+A ⋃ B = {x :x ∈ A ∨ x ∈ B}
 
 
 //////////////////////////////////////
@@ -373,12 +373,12 @@ A ⋃ B =
 Set intersection, ⋂
 
 The intersection of the sets A and B, written A ⋂ B, 
-is the set of all elements that are...?
+is the set of all elements that are in both A and B
 
 
 How could we express in set builder notation?
 
-A ⋂ B =
+A ⋂ B = {x : x ∈ A ∧ x ∈ B}
 
 ///////////////////////////////////////
 
@@ -387,12 +387,12 @@ Set difference,
 / or \ (means the same thing)
 
 The difference between the sets A and B, written A - B, 
-is the set of all elements...?
+is the set of all elements are in A but not in B
 
 
 How could we express in set builder notation?
 
-A - B =
+A - B = {x : x ∈ A ∧ x ∉ B}
 
 //////////////////////////////////////
 ⋃ ⋂ ⋁ ⋀ ∈ ∉
