@@ -289,6 +289,8 @@ Translation of negation:
 
 ///
 
+Example: 
+
 A 5th grade prize winner isn't friends with anyone
 
 translation: 
@@ -303,7 +305,7 @@ negate:
 
 switch the OR to be implies: 
 
-∀ x ∃ y  (in5th(x) ⋀ wonPrize(x)) → friendsWith(x, y))
+∀ x ∃ y  (in5th(x) ⋀ wonPrize(x)) → friendsWith(x, y)
 
 translation of negation: 
     All 5th grade prize winners have a friend 
