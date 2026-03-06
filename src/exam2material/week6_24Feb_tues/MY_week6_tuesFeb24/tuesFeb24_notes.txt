@@ -16,16 +16,105 @@ Today:
 
 HW 4 problem 6
 
+1. Write out all the premises
+2. Extract all information from premises   
+
+    And: use AndE1 and AndE2
+    Implies, left side implies, use ImplyE
+3. Look at the top level operator, that is guide for next 
+
+& top level then? Think of two sides as two seperate proofs, 
+try to contruct individually and try to put togeter with AndI.
+
+| top level then? look at the two sides, can you prove one of them 
+by themselves? If so, do that and use OrI1 or OrI2. See if you have 
+and OR statement already if you do try OrE to build your conclusion. 
+
+__>: - use ImplyI subproof. Assume left side of our goal and try to reach the right
+side.
+
+!(something) - use NegI subproof. Assume "something", try to get a F (contradiction)
+
+just a propostional atom? like p. 
+    see where the atom appears in previous cleams 
+    is it on the right side of an ->? 
+        try to prove the left side of -> to use ImplyE.
+    Do you have an OR statement as a claim? Try OrE 
+    to get your atom in both cases. 
+    Can we get F? use BottomE to conclude our atom. 
+    Try PbC subproof. Asume !p, try to get F. 
+
+After Each claim - ? ? 
+    scan all of the possible info, including assumes as see if 
+    anything can be extracted such as (AND, IMPLIES)
+
+Inside of a subproof -
+ What are the different ones?
+    OrE - bothsubproof needs to End with the same claim
+    (which should be what I was trying to prove when I opened 
+    OrE) 
+    ImplyI - try to get the right side of my goal ImplyI 
+    PbC - F
+    NegI - F
+
+    after opening a subproof and writing down a goal, 
+    find the top level operator of that goal. Follow the same 
+    pattern to nest a subproof and build that goal. 
+
+    when do we open a subproof? 
+        when you have one of the 4 statements above in mind. 
+    
+    can we assume anything in a subproof? 
+        can assume ANY one statement when opening a subproof; but
+        it must follow one of the 4 above patterns. PATTERN IN MIND. 
+
+    Doesn't fit a pattern or work out from above?
+        Might hit a wall, and this will mean that a different strategy needs
+        to be taken on. 
+            Do you have an OR as a claim? 
+                try OrE with it. 
+            nothing is working? try PbC. Assume !(whatever is being proven)
+            try to get a F contradiction. 
+        
+    When to use BottomE? 
+        IF WE are using OrE and can't get the goal in one 
+        subproof but I can get a contradiction (F).
+
+        Don't use in PbC or NegI if you get F, even though it is possible, 
+        as it won't help finish the proof.  
+
+
+
 p → q   equivalent to   ¬p ∨ q
 
+WHEN PROVING EQUIVALENT - 2 PROOFS
 
-p → q  ⊢  ¬p ∨ q
+
+p → q  ⊢  ¬p ∨ q ** 
+    Top-level op of the concl is an OR 
+    Can I prove one of the sides? 
+    As a backup, try PbC. 
+        Assume !(!p | q)
+            If we had !p | q, we would have a F. 
+                Try to prove just !p so can use OrI1 
+                Use NegI subproof 
+                    Assume p 
+
+
+        Goal: F
+        conclude !p 
+        to build OR statement and become the contradiction. 
 
      
 
 
 
 ¬p ∨ q   ⊢  p → q
+look at conclusion: top level- is __>: 
+ImplyI subproof
+    Assume p
+
+    Goal: q
 
 
 
@@ -38,11 +127,30 @@ HW 4 problem 7
 
 
 ¬(p → q)  ⊢  p ∧ ¬q
+Think about proving both sides seperately p doesn't work
+As a last resort try PbC on the conclusion
 
+    Assume ¬(p → q) 
+        If we had p __>: q, would contradict with premise
+        Try ImplyI subproof to get p __>: q 
+
+        Assume p 
+            No obvious way to get q, try PbC.
+            Subproof, assume !q. 
+
+            Goal: F 
+
+        goal: q
+    Goal: F
 
 
 
 p ∧ ¬q   ⊢   ¬(p → q)
+Break apart the premise 
+Use NegI subproof for the conclusion 
+    Assume (p → q)
+     
+    goal F
 
 
 
@@ -114,7 +222,7 @@ tautology
 
 
 
-Prove LEM (lem.sc):
+Prove LEM (lem.sc): LAW OF THE EXCLUDED MIDDLE
 
 ⊢ ( p ∨ ¬p )               //lem.sc
 
@@ -131,14 +239,17 @@ SOUNDNESS and COMPLETENESS of natural deduction in
     "true": demonstrate an argument with truth tables
 
 
-SOUNDNESS: ??
+SOUNDNESS: ?? everything I can prove is actually true.
+
 
 p ∧ q 
 --------
 p
 
 
-COMPLETENESS: ??
+COMPLETENESS: ?? I can prove everything that is true. 
+
+propositional logic deduction is both sound and complete 
 
 
 
@@ -184,29 +295,32 @@ A set is an unordered collection of elements
 
 ∈: is in, exists in
 
-    x ∈ A  means?
+    x ∈ A  means? element x exists in the set A 
 
-    x ∉ A  means?
+    x ∉ A  means? element x does not exist in set A 
 
 
 
 Example: A = {1,4,7,11,20}
 
-    1 ∈ A 
-    2 ∉ A
+    1 ∈ A : 1 exists in A
+    2 ∉ A : 2 does not exist in A 
 
 
 
 - Common sets in math:
 
-    ℕ: 
-    ℤ: 
-    ℚ: 
-    ℝ: 
-    ℂ: 
-    ∅: 
+    ℕ: natural number (integers starting with 1)    
+    ℤ: integers (positive, negative, 0)
+    ℚ: Rational numbers. I can write the number as p/q 
+        where p, q ∈ Z and q != 0
+    ℝ: real numbers 
+    ℂ: complex numbers 
+    ∅: null set / empty set 
 
 ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ
+
+⊂ is subset of 
 
 ////////////////////////////////////
 
@@ -219,14 +333,18 @@ Set builder notation.
 
 
 {x: x ∈ ℕ, 5 ≤ x ≤ 10}
-
+The set of all X such that X is a natural number between 5 and 10
+{5, 6, 7, 8, 9, 10}
 
 
 {k : k is a letter in "abracadabra"}
+{a, b, c, d, r}
 
 
 
 {x : x = 2k,  k ∈ ℕ}
+
+{2, 4, 6, 8, 10, ...}
 
 
 
