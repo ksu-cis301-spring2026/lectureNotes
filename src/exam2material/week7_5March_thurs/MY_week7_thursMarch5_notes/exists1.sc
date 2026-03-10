@@ -9,18 +9,17 @@ import org.sireum.justification.natded.prop._
 
 @pure def exists1[T](Human: T=>B @pure, Mortal: T=>B @pure, Socrates: T): Unit = {
   Deduce(
-    (
-      ∀ ((x: T) => (Human(x) __>: Mortal(x))),
-      Human(Socrates)
+     (
+      ∀((n: T) => (child(n) | adult(n))),
+      !child(Jane)
     )
     |-
-      ( ∃ ((x: T) => Mortal(x)) )
+    ( adult(Jane) )
     Proof(
-      1 ( ∀ ((x: T) => (Human(x) __>: Mortal(x))) ) by Premise,
-      2 ( Human(Socrates) ) by Premise,
-      3 ( Human(Socrates) __>: Mortal(x\Socrates)) by AllE[T](1),
-      4 ( Mortal(Socrates)) by ImplyE(3,2),
-      5 (∃ ((x: T) => Mortal(x)) ) by ExistsI[T](4)
+      1 ( ∀((n: T) => (child(n) | adult(n))) ) by Premise,
+      2 ( !child(Jane) )                        by Premise,
+      3 ( child(Jane) | adult(Jane) )           by AllE[T](1, Jane),
+      4 ( adult(Jane) )                         by OrE(3, 2)
     )
   )
 }
