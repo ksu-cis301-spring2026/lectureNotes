@@ -23,6 +23,7 @@ import org.sireum.justification.natded.prop._
       2 ( ∀((x: T) => (Q(x) __>: C(x)  )) ) by Premise,
       3 ( ∀((x: T) => (R(x) __>: !B(x) & !C(x)  )) ) by Premise,
 
+      
     )
   )
 }
