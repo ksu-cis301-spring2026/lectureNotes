@@ -19,6 +19,22 @@ import org.sireum.justification.natded.prop._
       Proof(
       1 ( ∀((x: T) => (P(x) __>: !Q(x)) ) ) by Premise,
 
+<<<<<<< main
+      2 SubProof(
+        3 Assume ( ∃((x: T) => (P(x) & Q(x))) ),
+        4 Let ((bob: T) => SubProof(
+          5 Assume ( P(bob) & Q(bob) ),
+          6 ( P(bob) ) by AndE1(5),
+          7 ( Q(bob) ) by AndE2(5),
+          8 ( P(bob) __>: !Q(bob) ) by AllE[T](1),
+          9 ( !Q(bob) ) by ImplyE(8, 6),
+          10 ( F ) by NegE(7, 9)
+          //goal: F
+        )),
+        11 ( F ) by ExistsE[T](3, 4)
+      ),
+        //goal: F
+=======
       //top level of !(∃((x: T) => (P(x) & Q(x)))) is the !
 
       //use NegI
@@ -40,6 +56,7 @@ import org.sireum.justification.natded.prop._
         //goal: F
       ),
       //afterwards, use NegI
+>>>>>>> main
       12 ( !(∃((x: T) => (P(x) & Q(x)))) ) by NegI(2)
     )
   )

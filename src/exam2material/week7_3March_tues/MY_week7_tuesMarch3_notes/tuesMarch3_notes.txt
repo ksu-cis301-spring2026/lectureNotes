@@ -33,25 +33,58 @@ Translate to predicate logic and evaluate:
 
 CIS200 is a CS course with a lab
 
+IsCS(CIS200) ⋀ HasLab(CIS200)
+
+common mistake = IsCS(HasLab(CIS200)) - don't nest the predicates _ : _
+-NO! b/c HasLab(Boolean) & IsCS(CollegeCourse)
+
 //
 
 Not all CS courses have a lab
 
+¬ (∀ x (IsCS(x) -> HasLab(x)))
+if used an AND, would say ALL courses were CS and ALL courses 
+    had a lab 
+    true - CIS 301 does not have a lab
+
+    Or: we can find a CS course that doesn't have a lab
+
+     ∃ x (isCS(x) ⋀ ¬HasLab(x))
 //
 
 There is a non-CS course with a lab
+
+∃ x (¬IsCS(x) ⋀ HasLab(x))
 
 //
 
 No math course has a lab
 
+∀ x (IsMath(x) -> ¬HasLab(x))
+
+(all math courses don't have lab)
+
+(there does not exist a math course with a lab)
+
+¬(∃ x IsMath(x) ⋀ HasLab(x))
+
+
 //
 
 There is a CS course with more hours than a math course
 
+two quantifiers - one for CS and one for math 
+
+∃ x ∃ y (IsCS(x) ⋀ IsMath(y) ⋀ MoreHours(x, y))
+
+∃ x (IsCS(x) ⋀ ∃ x y (IsMath(y) ⋀ MoreHours(x, y)) )
+
 //
 
 There is a CS course with more hours than any math course
+
+∃ x ∀ y ((IsCS(x) ⋀ IsMath(y)  → MoreHours(x, y))
+
 
 
 
@@ -66,28 +99,28 @@ Evaluating predicate logic statements
 Our domain is k1...kn
 
 1) ∀ x P(x)
-    true when: 
-    false when: 
+    true when: P(k) is true for every k in our domain 
+    false when: P(k) is not true for one k in our domain 
 
 2) ∃ x P(x)
-    true when: 
-    false when: 
+    true when: P(k) is true for one k in our domain
+    false when: P(k) is false for all k in our domain 
 
 3) ¬(∀ x P(x))
-    true when: 
-    false when:
+    true when: one k in our domain where P(k) is false 
+    false when: All k in our domain where P(k) is true 
 
 4) ¬(∃ x P(x))
-    true when: 
-    false when: 
+    true when: There is not one k in our domain where P(k) is true ALL FALSE
+    false when: There is one k in our domain where P(k) is true 
 
 5) ∀ x ¬P(x)
-    true when: 
-    false when: 
+    true when: P(k) is false for every k in the domain
+    false when: P(k) is true for one k in our domain 
 
 6) ∃ x ¬P(x)
-    true when: 
-    false when: 
+    true when: P(k) is false for one k in our domain
+    false when: P(k) is true for all k in our domain 
 
 
 /////////////////
@@ -96,25 +129,48 @@ Domain: ℤ (the integers)
 
 
 What do these mean in English? Are they true?
+English translations 
 
 
 ∀ n ∃ m (n^2 < m)
+DO NOT DO THIS
+For all integers, there exists an integer that is greater than the square of the first. 
 
+DO THIS INSTEAD 
+The square of every integer is less than some other integer. 
+
+true, For any integer n, n^2 + 1 is an integer bigger than n^2
 
 
 
 
 ∀ x ∃ y (x == y^2)
 
+Every integer is equal to the square of some other integer. OR
+
+Every integer is a perfect square.
+
+flase. 2 is not a perfect square. 
+
 
 
 
 ∀ n ∃ m (n^2 == m)
 
+For all integers, their square is another integer.
+
+    The square of every integer is an integer. 
+
+    integers are closed under multiplication
 
 
 
-∃ m ∀ n (n^2 == m)
+
+∃ m ∀ n (n^2 == m) Think of like nested looks 
+
+I can find an integer that equals the square of every other integer. 
+
+false - no such number exists. 
 
 
 
@@ -129,6 +185,10 @@ Write the following in predicate logic (Domain: ℤ):
 
 The sum of two negative integers is negative
 
+two quantififers 
+∀ x ∀ y (x < 0 ⋀ y < 0 →  x + y < 0) 
+true - adding two negative numbers will always yield a value
+    less than the original numbers 
 
 
 
@@ -137,7 +197,12 @@ The sum of two negative integers is negative
 The difference of two positive integers is
 not necessarily positive
 
+ ∃ x ∃ y (x > 0 ⋀ y > 0 ⋀ x - y <= 0) 
 
+ ¬( ∀ x ∀ y  (x > 0 ⋀ y > 0 -> x - y > 0)) 
+ not always the case that two + integers 
+
+true: x = 2, y =3. Both positive but x - y = -1 and this is not positive. 
 
 
 
@@ -161,7 +226,13 @@ suppose our domain is k1 through kn
 
 
 ¬(∃ x P(x)) is  equivalent to...¬(P(k1) V ... V P(kn))
-which is: ¬P(k1) ⋀ ... ⋀ ¬P(kn)
+
+    by Demorgan's: 
+
+which is: 
+¬(∃ x P(x))
+
+¬P(k1) ⋀ ... ⋀ ¬P(kn)
 
 
 /////////////////////////
@@ -193,7 +264,7 @@ Apply DeMorgan's laws: example
 or outside a statement with logical connectives
 
     Reminder:
-        p → q is equivalent to (OR statement):
+        p → q is equivalent to (OR statement): ¬p ⋁ q
         ¬(p ⋀ q) is equivalent to: 
         ¬(p ⋁ q) is equivalent to: 
 
@@ -218,12 +289,26 @@ Translation of negation:
 
 ///
 
+Example: 
+
 A 5th grade prize winner isn't friends with anyone
 
 translation: 
+    two quantifiers - one for 5th grader, one for friends
+    ∃ x ∀ y (in5th(x) ⋀ wonPrize(x) ⋀  ¬friendsWith(x, y))
+
 negate:
+ ¬ (∃ x ∀ y (in5th(x) ⋀ wonPrize(x) ⋀  ¬friendsWith(x, y)))
+ ∀ x ∃ y ¬  ((in5th(x) ⋀ wonPrize(x)) ⋀  ¬friendsWith(x, y)) Rightmost and 
+ ∀ x ∃ y  (¬ (in5th(x) ⋀ wonPrize(x)) ⋁ friendsWith(x, y))
+∀ x ∃ y  (¬(in5th(x) ⋀ wonPrize(x)) ⋁ friendsWith(x, y))
+
+switch the OR to be implies: 
+
+∀ x ∃ y  (in5th(x) ⋀ wonPrize(x)) → friendsWith(x, y)
 
 translation of negation: 
+    All 5th grade prize winners have a friend 
 
 ////////////////////////////////////
 
