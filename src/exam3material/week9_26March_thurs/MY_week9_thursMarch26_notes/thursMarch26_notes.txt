@@ -116,7 +116,7 @@ Where x is some natural number. We must prove the claim holds for k+1, that:
     1 + 2 + ... + x + (x+1) = (x+1)*((x+1)+1)/2
 
 We have that:
-1 + 2 + ... + x = x*(x+1)/2 = k*(k+1)/2 + (k+1) (by inductive hypothesis)
+1 + 2 + ... + x + (x+1) = x*(x+1)/2 + (x+1) (by inductive hypothesis)
                             ...
                             = (k+1)*((k+1)+1)/2
 
@@ -129,18 +129,18 @@ We have that:
 Do you think induction can be used to prove properties for
     ALL integers?
 
+NO. Need a smallest value
 
 /////////////////////////////////
 
 Induction template.
 
-1) 
+1) Prove the base case (prove true for smallest in our domain)
 
 
-2) 
-
-
-3) 
+2) Inductive step. Assume the inductive hypothesis (that claim holds for some k in our domain). 
+Prove claim holds for k+1.
+ 
 
 /////////////////////////////////
 
@@ -165,13 +165,16 @@ Proof by induction.
 Example: Prove that 3^n - 1 is even for all positive integers n.
 
 
-what does "even" mean? 
+what does "even" mean? divisible by 2
 
-
+a number n is even if n = 2a where a is an integer.
 
 Proof by induction.
 
+Base case. Prove our claim for smallest positive integer, n = 1. We have 3^1 - 1 = 3 - 1 = 2. Since 2 = 2*1 and 1 is an integer, then 
+3^1 - 1 is even. Base case holds
 
+Inductive step. Assume inductive hypothesis - that 3^k - 1 is for some positive integer k. We must show that 3^(k^1) - 1 is even.
 
 //////////////////////////////////
 
