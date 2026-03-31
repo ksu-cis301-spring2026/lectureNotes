@@ -313,7 +313,14 @@ Pick integers a and b. Assume a and b are even. Try to prove ab is even.
 
 Direct proof:
 
+Let a and b be even integers. Since a is even, then a == 2k for some integer k. since b is even, then b == 2m for some integer m
+(wanting to show that ab is even) We have:
+    ab = (2k)(2m)
+       = 2(2km)
 
+Thus ab = 2j where j is the integer 2km, and thus ab is even. 
+
+(wanting to show that ab is even)
 
 
 
