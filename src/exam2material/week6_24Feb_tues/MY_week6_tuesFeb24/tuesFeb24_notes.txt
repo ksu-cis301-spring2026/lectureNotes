@@ -52,43 +52,74 @@ How do we approach proofs?
 
 1. Write out all the premises
 2. Extract all information from premises 
-        AND statement?
-        IMPLIES statement?
+        AND: AndE1 and AndE2
+        IMPLIES, left side of the implies: use ImplyE 
 
 
 3. Look at what you are trying to prove 
     (what do we look for in goal/conclusion?)
+    look at top level operator - that'll guide your approach
+    ∧ - think of two sides as two separate proofs.
+        Try to construct them both individually, put them together with AndI.
 
-    ∧ - 
+    ∨ - look at two sides - can you prove one of them by themselves? 
+        If so, do that and use OrI1 or OrI2.
 
-    ∨ -   
+        See if you have an or statement already. If you do, try OrE
 
-    → - 
+    → - Use ImplyI subproof. Assume left side of our goal, try to reach right side
 
-    ¬(something) - 
+    ¬(something) - use NegI subproof. Assume "something" and try to get F (contradiction)
 
     just a propositional atom? like p.
+        see where the atom appears in previoius claims.
+        Is it on the right side of an ->?
+            Try to prove the left side of the -> to use ImplyI
+        Do you have an or statement as claim? 
+            Try OrE to get atom in both cases
+        Can we get a F? Use BottomE to conclude atom.
+        Try PbC SubProof. Assume ¬p, try to get F
 
 
-After each claim - 
+After each claim - scan all available info, including assumes. 
+See if you can extract anything (And, Implies)
 
 
 
 Inside a subproof - 
     (What are the different subproofs?)
+    OrE - both subproofs need to end with the same claim (should be whatever I was trying to prove when I opened subproofs)
+    ImplyI - try to get right side of goal imply statement
+    PbC - F 
+    NegI - F
 
+
+    after opening a subproof and writing down a goal, 
+    find top level operator of that goal. Follow same pattern
+     to nest subproof to build that goal.
+    
+    
     --> when do we open a subproof?
+    when you have one of the four subproofs in mind
+
 
     --> can we assume anything in a subproof? 
-
-
+    can assume any one statement when opening a subproof,
+    but don't do it unless you have a pattern in mind
 
 
 Doesn't fit a pattern or doesn't work out from above?
-
+mind hit a brick wall - need to try a different strtegy
+    do you have an OR as a claim? try OrE with it
+    nothing's working? Try PbC. Assume the opposite of conclusion.
+    Try to get a F contradiction
 
 
 When to use BottomE?
+If you are using OrE and can't get goal in one subproof but can get F, 
+use BottomE to conclude what you want.
+
+Don't use in PbC or NegI if you get F, even though it is possible, as it won't help finish the proof.
 
 
 
@@ -131,16 +162,16 @@ SOUNDNESS and COMPLETENESS of natural deduction in
     "true": demonstrate an argument with truth tables
 
 
-SOUNDNESS: ??
+SOUNDNESS: ?? everything I can prove is actually true
 
 p ∧ q 
 --------
 p
 
 
-COMPLETENESS: ??
+COMPLETENESS: ?? I can prove everything that is true
 
-
+propositional logic deduction is both sound and completeness
 
 
 
@@ -184,9 +215,9 @@ A set is an unordered collection of elements
 
 ∈: is in, exists in
 
-    x ∈ A  means?
+    x ∈ A  means? element x exists in set A
 
-    x ∉ A  means?
+    x ∉ A  means? element x does not exist in set A
 
 
 
@@ -199,15 +230,17 @@ Example: A = {1,4,7,11,20}
 
 - Common sets in math:
 
-    ℕ: 
-    ℤ: 
-    ℚ: 
-    ℝ: 
-    ℂ: 
-    ∅: 
+    ℕ: Natural numbers (integers starting with 1)
+    ℤ: Integers (positive, negative, 0)
+    ℚ: Rational Numbers. Write number as p/q, where p, q ∈ ℤ
+    ℝ: Real Numbers
+    ℂ: Complex numbers
+    ∅: null set / empty set
 
 ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ
 
+
+⊂ is subset of 
 ////////////////////////////////////
 
 Set builder notation.
@@ -219,16 +252,16 @@ Set builder notation.
 
 
 {x: x ∈ ℕ, 5 ≤ x ≤ 10}
-
+{5, 6, 7, 8, 9, 10}
 
 
 {k : k is a letter in "abracadabra"}
 
-
+{a, b, c, d, r}
 
 {x : x = 2k,  k ∈ ℕ}
 
-
+{2, 4, 6, 8, 10, ...}
 
 {n : n = k^2, k ∈ Z}
 

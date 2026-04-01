@@ -46,28 +46,44 @@ Examples -- are the following arguments valid?
 
 ///
 
+Premises: 
+everything that's P is also Q
+There's something in my domain that's P
+
+Conclusion: there is something in my domain that's Q
+
 Premises: ∀ x (P(x) → Q(x)), ∃ x P(x)
 Conclusion: ∃ x Q(x)
 
 Valid or not? 
 
-
+whatever thing was P is also a thing that's Q
 ///
+
+Premise: everything in my domain is P
+
+Conclusion: there's something in my domain that's P
 
 Premises: ∀ x P(x)
 Conclusion: ∃ x P(x)
 
 Valid or not?
 
+No. wouldn't work if domain was empty
 /////////////////////////////////
 
-soundness ?
+soundness :
 
+Everything we can prove with our proof system is a true statement
 
-completeness ?
+completeness :
 
+We can use our proof system to prove everything that's true
 
-predicate logic?
+predicate logic :
+
+Will be incomplete (There will be true arguments in some domains 
+that we can't prove because they're not true in every domain)
 
 /////////////////////////////////
 
@@ -168,14 +184,14 @@ in that domain?
 Syntax:
 
 (
-    ∀ ((x: T) => Human(x))
+    ∀ ((x: T) => Human(x)) //everyone in my domain is human
 )
 ⊢
-( Human(Socrates) )
+( Human(Socrates) ) //prove that socrates is Human
 
 Proof(
     1 ( ∀ ((x: T) => Human(x)) )    by Premise,
-    2 ( Human(Socrates) )           by ???
+    2 ( Human(Socrates) )           by AllE[T](1)
 )
 
 Note: This assumes "Socrates" and "Human" were both parameters
@@ -206,12 +222,12 @@ First: consider these two statements:
 
 are they equivalent?
     ∀ x (P(x) ⋀ Q(x))  - translation?
-
+    Everything in my domain is both P and Q
 
 
 
     (∀ x P(x)) ⋀ (∀ x Q(x)) - translation?
-
+    Everything in my domain is P AND everything in my domain is Q
 
 
 
@@ -232,7 +248,7 @@ Idea:
 ...what can we say about that statement for all individuals in
     our domain?
 
-
+    We can use that statement for each individual in our domain
 
 ///
 
@@ -256,7 +272,7 @@ Rule syntax:
     ...
     P(a)
 )),
-10 ( ∀ ((x: T) => P(x)) ) by ???
+10 ( ∀ ((x: T) => P(x)) ) by AllI[T](4)
 
 
 //a could be any (fresh) individual name
@@ -283,6 +299,9 @@ Are these statements equivalent?
 
 ∀ x (P(x) ⋁ Q(x))           (∀ x P(x)) ⋁ (∀ x Q(x))
 
+could prove: 
+premise: (∀ x P(x)) ⋁ (∀ x Q(x))
+conclusion: ∀ x (P(x) ⋁ Q(x))
 
 //////////////////////////////////////////
 
@@ -338,7 +357,14 @@ Suppose you are trying to prove this conclusion:
 
 How to construct?
 
-
+AllI, name a random individual (a)
+    ImplyI
+        assume (P(a) ⋀ Q(a))
+            NegI
+                assume R(a)
+                //goal: F
+        //goal: ¬R(a)
+    //goal: (P(a) ⋀ Q(a) → ¬R(a))
 
 
 ////////////////////////////

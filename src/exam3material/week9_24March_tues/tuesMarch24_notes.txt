@@ -92,8 +92,13 @@ Syntax:
 
 
 --> Think of ExistsE like OrE
+<<<<<<< main
+    ∃ x P(x) means... P(k1) V P(k2) V ... V P(kn)
+    where k1... kn are inside our domain
+=======
     ∃ x P(x) means...? P(k1) V P(k2) V ... V P(kn)
     where k1...kn are the individuals in my domain
+>>>>>>> main
 
 
 Use ExistsE in the SAME situations you would use OrE
