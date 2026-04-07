@@ -1,4 +1,4 @@
-HW 8 due Tuesday, April 7
+    HW 8 due Tuesday, April 7
 
 ///////////////////////////
 
@@ -303,7 +303,7 @@ B: what elements? all evens
 Proof that A ⊆ B.
 
 Suppose x ∈ A. Thus x = 4k+2 where k is an integer. We have that
-x = 2(2k+1), and so x = 2a where is the integer 2k+1.
+x = 2(2k+1), and so x = 2a where a is the integer 2k+1.
 
 Thus x ∈ B.
 
