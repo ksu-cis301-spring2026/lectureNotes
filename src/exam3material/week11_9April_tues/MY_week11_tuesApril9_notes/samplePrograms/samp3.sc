@@ -4,7 +4,7 @@
 import org.sireum._
 
 //use a loop to print the numbers from 10 down to 1
-
+//loop is counting down from 10 to 1
 var cur: Z = 10
 while (cur >= 1) {
   println("Next number: ", cur)
