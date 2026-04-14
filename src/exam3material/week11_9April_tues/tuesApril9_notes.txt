@@ -41,19 +41,17 @@ Apply proof techniques and similar reasoning to prove correctness
 of basic programs.
 
 (Why does this matter?)
+    things that may cause cause if done incorrectly. 
 
+---------------------------------------------------------------
 
+AWS formal methods - They have methods for theirs 
 
+Library sorting algorithms 
 
-AWS formal methods
+Drone flight
 
-
-
-Drone flight 
-
-
-
-////////////////////////////
+--------------------------------------------------------------
 
 Programs are written in Slang, which is a subset of Scala. We will
 study:
@@ -97,12 +95,13 @@ Basic program #4
 
 
 
-
+KNOWN AS manual mode 
 First: prove program correctness in "manual" mode
     (we have to process the knowledge gained
     in each statement)
 
-
+shift to automode 
+manual -> auto to prove correctness => FUNCTION CONTRACT -/ loop invariants 
 Then: prove program correctness in "auto" mode
     - we provide function contracts and loop invariants
     - checker can make sure our program meets our
@@ -111,10 +110,12 @@ Then: prove program correctness in "auto" mode
 
 ////////////////////////
 
-Preconditions: ?
+Preconditions: 
+    assumptions we need to make before some section of code
 
 
-Postconditions: ?
+Postconditions: 
+    things we want to prove our program does
 
 
 /////
@@ -127,7 +128,8 @@ assume statements
 
 Example:
     var input: Z = Z.prompt("Enter a positive number: ")
-    assume(input > 0)
+    assume(input > 0) 
+    //assume statements 
 
 /////
 
@@ -144,6 +146,8 @@ assert(some claim)
 
 How are Logika asserts different from C# (and other languages)?
 
+Logika: assert is satisfied if we have Proved what it claims
+Other languages like C#: call the function then cause it to assert that 
 
 
 
@@ -168,6 +172,7 @@ program statement
 
 (claims/asserts about output/results/postconditions)
 
+assert statement 
 
 
 
@@ -201,6 +206,11 @@ var y: Z = 12
 
 //proof block? what would go there?
 
+Deduce(
+    1 (input > 0) by Premise, 
+    2 ( y == 12 ) by Premise
+)
+
 
 
 
@@ -212,8 +222,8 @@ Algebra* (or Algebra T)
 
     Deduce(
         1 ( x == 2 ) by Premise,
-        2 ( x >= 2 ) by ???,
-        3 ( 4 > 0 ) by ???
+        2 ( x >= 2 ) by Algebra*(1),
+        3 ( 4 > 0 ) by Algebra T  
     )
 
 
