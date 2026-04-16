@@ -10,8 +10,14 @@ import org.sireum.justification.natded.prop._
 def getTicketCosts(adult: Z, kid: Z): Z = {
   //what do we want for our function contract?
   Contract(
-    Requires(adult >= 0, kid >= 0),
-    Ensures(Res[Z] == adult*50 + kid*30, Res[Z] >= 0)
+    Requires(
+      adult >= 0,
+      kid >= 0
+    ),
+    Ensures(
+      Res[Z] == 50*adult + 30*kid,
+      Res[Z] >= 0
+    )
   )
 
 

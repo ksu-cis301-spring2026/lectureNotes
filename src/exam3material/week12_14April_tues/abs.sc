@@ -27,7 +27,23 @@ if (num < 0) {
     3 ( numOrig == num ) by Premise,
   )
 
+  Deduce(
+    1 ( !(num < 0 ) ) by Premise, //condition is false
+    2 ( numOrig == num ) by Premise, //assignment statement
+    3 ( num >= 0 ) by Algebra*(1),
+    4 ( num == numOrig ) by Algebra*(2)
+  )
+
+  //need: num >= 0 
+  //need: num == numOrig 
 }
+
+Deduce(
+  1 ( num >= 0 ) by Premise, //true in both branches
+  2 ( num == -1*numOrig | num == numOrig ) by Premise, //LHS true in if, RHS true in else
+  //need: num >= 0
+  //need: num == -1*numOrig | num == numOrig
+)
 
 
 Deduce(
