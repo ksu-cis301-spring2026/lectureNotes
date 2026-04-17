@@ -46,30 +46,54 @@ The induction domino effect:
 
 
 What is this saying?
-    P(1)? 
+    P(1)? claim is true for the first one (n=1)
 
-    ∀ k (P(k) → P(k+1))? 
+    ∀ k (P(k) → P(k+1))? This is saying - For all natural numbers K; if P(k) holds then I promise
+                                            that P(k+1) also holds. 
+
+                                            If my claim holds for some value of K, then I promise it
+                                            holds for the next value.
+                                              → ∀ n P(n) For everything in my domain this statement is true. 
 
 
 
 Putting it all together:
+if it holds for the first AND we know that for all numbers in the domain
+if it holds for one then it will hold for the next, then we know that the claim 
+falls for everything. 
 
 
 
 English translation?
 
 
-How will we prove P(1)?
+How will we prove P(1)? plug-in n=1 into the claim. 
 
 
 How will we prove ∀ k (P(k) → P(k+1))? 
     (How would we prove this for-all statements in predicate logic?)
 
+    Use for all introductions
+        pick a random individual (k) from our domain 
+
+        assume P(k)
+
+        goal: try to prove P(k+1)
+
+      (  This will prove (P(k) → P(k+1)) )
+
 
 
 ////////////////////////////////////
 
+- - The mathmatical pieces - - 
+
+P(1): proving for the first one (the Base case) (BASE CASE)
+∀ k (P(k) → P(k+1)) - the Inductive STEP (INDUCTIVE STEP)
+    assume P(k) - the inductive hypothesis (INDUCTIVE HYPOTHESIS)
+
 Why are we doing this?
+To prove loops in programming later on. 
 
 ////////////////////////////////////
 
@@ -84,6 +108,26 @@ We want to prove that for any positive integer n:
 
 Proof by induction.
 
+Base Case. We must prove the claim holds for the
+ smallest value in our domain. n=1. On left side we have 
+ 1 and on the right side we have: 1*1(1+1)/2 = 1
+
+ The two sides are equal, so the base case holds. 
+
+Inductive Step. We assume the inductive hypothesis, that 
+1 + 2 + ... + k = k*(k+1)/2
+Where k is some natural number. We must prove the claim holds 
+for k+1, so that: 
+    1 + 2 + ... + k + (k+1) = (k+1)*((k+1)+1)/2
+
+We have that:
+  1 + 2 + ... + k + (k+1) =  k*(k+1)/2 + (k+1) (by inductive hypothesis)
+                            ...
+                            (k+1)*((k+1)+1)/2
+
+
+
+
 
 
 /////////////////////////////////
@@ -95,15 +139,18 @@ Proof by induction.
 Do you think induction can be used to prove properties for
     ALL integers?
 
+    NO. Need a smallest value. 
+
 
 /////////////////////////////////
 
 Induction template.
 
-1) 
+1) Base Case (prove true for the smallest in the domain)
 
 
-2) 
+2) Inductive step (Assume the inductive hypothesis that 
+claim holds for some k in our domain) Prove claim holds for k + 1
 
 
 3) 
@@ -131,11 +178,21 @@ Proof by induction.
 Example: Prove that 3^n - 1 is even for all positive integers n.
 
 
-what does "even" mean? 
+what does "even" mean? divisible by 2
+
+A number n is even even if n = 2a where a is an integer
 
 
 
 Proof by induction.
+
+Base case. We must prove our claim for the smallest positive integer,
+n = 1. We have 3^1 - 1 = 3 - 1 = 2. Since 2 = 2*1 and 1 
+is an integer, then 3^1 - 1 is even. The base case holds.
+
+Inductive step. We assume the inductive hypothesis - that 
+3^k - 1 is even for some positive integer k. We must show that
+3^(k+1) - 1 is even. 
 
 
 

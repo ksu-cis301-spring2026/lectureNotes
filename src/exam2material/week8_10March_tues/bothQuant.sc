@@ -19,13 +19,31 @@ import org.sireum.justification.natded.prop._
     Proof(
       1 ( !(∃((x: T) => P(x))) ) by Premise,
 
+<<<<<<< HEAD
+      //use AllI pattern to prove  ∀((x: T) => !P(x))
+      2 Let ((a: T)) => SubProof(
+=======
       //use AllI pattern to prove ∀((x: T) => !P(x))
       2 Let ((a: T) => SubProof(
+>>>>>>> 7e4da979483537058bc62b58ded9a2ad2d698c39
         //use NegI pattern to prove goal of !P(a)
         3 SubProof(
           4 Assume (P(a)),
 
           //can contradict with premise if we have 
+<<<<<<< HEAD
+          //∃((x: T) => P(x)))
+          5 (∃((x: T) => P(x)))) by ExistsI[T](4),
+          6 (F) by NegE(5, 1)
+          
+          
+          ),
+          7 (!P(a)) by NegI(3)
+        )), 
+        8 (∃((x: T) => P(x))) by AllE[T](2)
+
+      )
+=======
           //∃((x: T) => P(x))
 
           5 ( ∃((x: T) => P(x)) ) by ExistsI[T](4),
@@ -40,6 +58,9 @@ import org.sireum.justification.natded.prop._
       8 ( ∀((x: T) => !P(x)) ) by AllI[T](2)
 
       //goal: ∀((x: T) => !P(x))   
+>>>>>>> 7e4da979483537058bc62b58ded9a2ad2d698c39
     )
-  )
+
+      //want  ∀((x: T) => !P(x))
+
 }

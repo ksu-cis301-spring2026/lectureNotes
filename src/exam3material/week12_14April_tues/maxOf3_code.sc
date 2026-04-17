@@ -74,6 +74,10 @@ if (a >= b) {
 println("Max between ", a, ", ", b, " and ", c, " is ", max)
 
 //How do we know we have the max?
+assert(max >=a)
+assert(max >=b)
+assert(max >=c)
+assert(max == a | max == b | max == c) 
 //what assert(s) do we want?
 assert(max >= a)
 assert(max >= b)
