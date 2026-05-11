@@ -29,6 +29,8 @@ where *premises* is a comma-separated list.
 
 In truth tables?
 
+valid: every truth assignment that made all premises true 
+also made it that the conclusion was true
 
 
 
@@ -76,6 +78,9 @@ Proof(
 
 
 --> what justifications so far?
+list of the justifications - 
+
+    AndI, AndE1, AndE2, Premise 
 
 
 
@@ -111,6 +116,8 @@ Example:
 (p ∧ q) ⊢ (p ∨ q)
 Proof(
     1 ( p ∧ q   ) by Premise,
+    2 ( q ) by AndE2(1),
+    3 ( p V q ) by OrI2(2),
 
 )
 
@@ -134,6 +141,10 @@ OR elimination
 Idea:
 - If an OR statement is true, what do we know?
 
+p V q 
+
+at least one of p and q are true
+
 
 
 
@@ -141,6 +152,8 @@ Idea:
 
 - What if we can reach the same conclusion no matter which side
     of the OR is true?
+
+    we know the conclusion was true overall. 
 
 
 
@@ -157,7 +170,7 @@ Rule summary:
                ),                  ),
 OrE : ---------------------------------------------
                          R
-
+After we should be able to say that R is for sure true
 
 How does this relate to programming?
 
@@ -169,7 +182,7 @@ else {
     some result
 }
 
---> what do we know is true here?
+--> what do we know is true here? some result 
 
 
 
@@ -222,12 +235,19 @@ Proof(
 
 What is the only way to prove an argument is invalid?
 
+With ONE truth assignments where the premises are all true but 
+the conclusion is false
+
+p = F, q = T
+p V q premise is true
+p ^ q is false 
+
 
 ////////////////////////////////
 
 Order of operations:
-
-p ∨ q ∨ r
+right most or is the top level op
+(p ∨ q) ∨ r
 
 with parentheses?
 
@@ -235,20 +255,24 @@ with parentheses?
     the subproofs?
 
 SubProof(
-    Assume ( ??? ),
+    Assume ( p V q ),
     ...
 ),
 SubProof(
-    Assume ( ??? )
+    Assume ( r )
+    ... 
 )
 
-
+//top level then two sides (thoughts)
 ////////////////////////////////
 
 Proving equivalence.
 
 --> how do we prove two statements are equal in truth tables?
 
+filled out two truth tables 
+show that for every truth assignment that the
+ two statements has the same output
 
 
 
@@ -257,7 +281,7 @@ Proving equivalence.
 
 premise ⊢ conclusion
 
-
+conclusion ⊢ premise
 
 
 
@@ -285,6 +309,10 @@ if (extraCredit == true || grade >= 80) {
         //do stuff
     }
 }
+
+if (extraCredit == true || grade >= 80) && (extraCredit == true || grade <= 90)
+
+if ((extraCredit == true) || (grad >= 80 && grade <= 90))
 
 --> translate to propositional logic
 
@@ -315,6 +343,7 @@ if (x > 5) {
     y = 17;
 }
 
+y is 17 
 
 
 ///////////////////////////////
@@ -328,6 +357,8 @@ c ( Q       )   by ImplyE(b, a)
 
 What you type for → 
     __>:
+
+    __>: __:> __:> __:> __:> __:>
 
 ////////////////////////////////////////
 

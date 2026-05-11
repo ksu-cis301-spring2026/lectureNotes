@@ -61,22 +61,26 @@ Apply proof techniques and similar reasoning to prove correctness
 of basic programs.
 
 (Why does this matter?)
+<<<<<<< HEAD:src/exam3material/week11_9April_tues/tuesApril9_notes.txt
+    things that may cause cause if done incorrectly. 
+=======
     things that sensitive (financial, medical, any software in
     very expensive equipment (space shuttles, planes, etc.))
+>>>>>>> 108e264a82ae7fe61e62913249b6cdb3b1b58088:src/exam3material/week11_7April_tues/tuesApril7_notes.txt
 
+---------------------------------------------------------------
 
+<<<<<<< HEAD:src/exam3material/week11_9April_tues/tuesApril9_notes.txt
+AWS formal methods - They have methods for theirs 
+=======
 library methods (like sorting, etc.)
+>>>>>>> 108e264a82ae7fe61e62913249b6cdb3b1b58088:src/exam3material/week11_7April_tues/tuesApril7_notes.txt
 
+Library sorting algorithms 
 
-AWS formal methods
+Drone flight
 
-
-
-Drone flight 
-
-
-
-////////////////////////////
+--------------------------------------------------------------
 
 Programs are written in Slang, which is a subset of Scala. We will
 study:
@@ -120,12 +124,13 @@ Basic program #4
 
 
 
-
+KNOWN AS manual mode 
 First: prove program correctness in "manual" mode
     (we have to process the knowledge gained
     in each statement)
 
-
+shift to automode 
+manual -> auto to prove correctness => FUNCTION CONTRACT -/ loop invariants 
 Then: prove program correctness in "auto" mode
     - we provide function contracts and loop invariants
     - checker can make sure our program meets our
@@ -140,6 +145,10 @@ Preconditions:
 
 Postconditions: 
     things we want to prove our program does
+<<<<<<< HEAD:src/exam3material/week11_9April_tues/tuesApril9_notes.txt
+
+=======
+>>>>>>> 108e264a82ae7fe61e62913249b6cdb3b1b58088:src/exam3material/week11_7April_tues/tuesApril7_notes.txt
 
 /////
 
@@ -151,7 +160,8 @@ assume statements
 
 Example:
     var input: Z = Z.prompt("Enter a positive number: ")
-    assume(input > 0)
+    assume(input > 0) 
+    //assume statements 
 
 /////
 
@@ -168,10 +178,15 @@ assert(some claim)
 
 How are Logika asserts different from C# (and other languages)?
 
+<<<<<<< HEAD:src/exam3material/week11_9April_tues/tuesApril9_notes.txt
+Logika: assert is satisfied if we have Proved what it claims
+Other languages like C#: call the function then cause it to assert that 
+=======
 Logika: assert is satisfied if we have PROVED what it claims
 
 Other languages (like C#): asserts call the code, are satisfied
     if it returns what we are asserting
+>>>>>>> 108e264a82ae7fe61e62913249b6cdb3b1b58088:src/exam3material/week11_7April_tues/tuesApril7_notes.txt
 
 
 
@@ -197,8 +212,12 @@ program statement
 
 (claims/asserts about output/results/postconditions)
 
+<<<<<<< HEAD:src/exam3material/week11_9April_tues/tuesApril9_notes.txt
+assert statement 
+=======
 assert statement
 
+>>>>>>> 108e264a82ae7fe61e62913249b6cdb3b1b58088:src/exam3material/week11_7April_tues/tuesApril7_notes.txt
 
 
 
@@ -236,6 +255,11 @@ Deduce(
     2 ( y == 12 ) by Premise
 )
 
+Deduce(
+    1 (input > 0) by Premise, 
+    2 ( y == 12 ) by Premise
+)
+
 
 
 
@@ -248,7 +272,11 @@ Algebra* (or Algebra T)
     Deduce(
         1 ( x == 2 ) by Premise,
         2 ( x >= 2 ) by Algebra*(1),
+<<<<<<< HEAD:src/exam3material/week11_9April_tues/tuesApril9_notes.txt
+        3 ( 4 > 0 ) by Algebra T  
+=======
         3 ( 4 > 0 ) by Algebra T
+>>>>>>> 108e264a82ae7fe61e62913249b6cdb3b1b58088:src/exam3material/week11_7April_tues/tuesApril7_notes.txt
     )
 
 

@@ -13,6 +13,10 @@ import org.sireum.justification.natded.prop._
       3 ( a & b __>: t ) by Premise,
       4 ( p | t __>: q __>: r ) by Premise,
       5 ( b | c __>: q ) by Premise,
+
+      6 ( b ) by AndE1(1),
+      7 ( s | a ) by AndE2(1), 
+      8 ()
       
       //what can we get right away from the premises?
 

@@ -13,6 +13,10 @@ import org.sireum.justification.natded.prop._
       Proof(
         //PROOF GOES HERE
         1 ( p & q ) by Premise,
+        2 ( p ) AndE1(1),
+        3 ( q ) AndE2(1),
+        4 ( q & p ) by AndI(3, 2)
+      
         
     )
   )
